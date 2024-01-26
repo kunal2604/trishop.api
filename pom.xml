@@ -8,11 +8,11 @@
         <version>2.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.trishop.api</groupId>
-    <artifactId>trishop.api</artifactId>
+    <groupId>com.youtube</groupId>
+    <artifactId>jwt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>trishop.api</name>
-    <description>Trishop e-commerce application API</description>
+    <name>jwt-youtube</name>
+    <description>Demo project to understand JWT token + role based authentication</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
