@@ -18,4 +18,8 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return (List<Product>) _productDao.findAll();
     }
+
+    public void deleteProductDetails(int productId) {
+        _productDao.deleteById(productId);
+    }
 }

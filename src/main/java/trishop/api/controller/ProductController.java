@@ -3,10 +3,7 @@ package trishop.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import trishop.api.entity.ImageModel;
 import trishop.api.entity.Product;
@@ -53,5 +50,11 @@ public class ProductController {
     @GetMapping({"/getAllProducts"})
     public List<Product> getAllProducts() {
         return _productService.getAllProducts();
+    }
+
+    @PreAuthorize("hasRole('Admin')")
+    @DeleteMapping({"/deleteProductDetails/{productId}"})
+    public void deleteProductDetails(@PathVariable("productId") Integer productId) {
+        _productService.deleteProductDetails(productId);
     }
 }
