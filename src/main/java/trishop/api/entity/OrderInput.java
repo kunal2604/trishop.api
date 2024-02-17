@@ -5,11 +5,12 @@ import java.util.List;
 public class OrderInput {
     private String orderName;
     private String orderAddress;
-
+    private String orderContact;
+    private String orderAlternateContact;
+    private List<OrderProductQuantity> orderProductQuantityList;
     public String getOrderName() {
         return orderName;
     }
-
     public void setOrderName(String orderName) {
         this.orderName = orderName;
     }
@@ -45,9 +46,4 @@ public class OrderInput {
     public void setOrderProductQuantityList(List<OrderProductQuantity> orderProductQuantityList) {
         this.orderProductQuantityList = orderProductQuantityList;
     }
-
-    private String orderContact;
-    private String orderAlternateContact;
-    private List<OrderProductQuantity> orderProductQuantityList;
-
 }

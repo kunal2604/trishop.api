@@ -10,6 +10,26 @@ public class OrderDetail {
     private String orderName;
     private String orderAddress;
 
+    private String orderContact;
+    private String OrderAlternateContact;
+    private String orderStatus;
+    private Double orderAmount;
+    @OneToOne
+    private Product product;
+    @OneToOne
+    private User buyer;
+
+    public OrderDetail(String orderName, String orderAddress, String orderContact, String orderAlternateContact, String orderStatus, Double orderAmount, Product product, User buyer) {
+        this.orderName = orderName;
+        this.orderAddress = orderAddress;
+        this.orderContact = orderContact;
+        OrderAlternateContact = orderAlternateContact;
+        this.orderStatus = orderStatus;
+        this.orderAmount = orderAmount;
+        this.product = product;
+        this.buyer = buyer;
+    }
+
     public Integer getOrderId() {
         return orderId;
     }
@@ -32,17 +52,6 @@ public class OrderDetail {
 
     public void setOrderAddress(String OrderAddress) {
         this.orderAddress = OrderAddress;
-    }
-
-    public OrderDetail(String orderName, String orderAddress, String orderContact, String orderAlternateContact, String orderStatus, Double orderAmount, Product product, User buyer) {
-        this.orderName = orderName;
-        this.orderAddress = orderAddress;
-        this.orderContact = orderContact;
-        OrderAlternateContact = orderAlternateContact;
-        this.orderStatus = orderStatus;
-        this.orderAmount = orderAmount;
-        this.product = product;
-        this.buyer = buyer;
     }
 
     public String getOrderContact() {
@@ -92,13 +101,4 @@ public class OrderDetail {
     public void setOrderAmount(Double orderAmount) {
         this.orderAmount = orderAmount;
     }
-
-    private String orderContact;
-    private String OrderAlternateContact;
-    private String orderStatus;
-    private Double orderAmount;
-    @OneToOne
-    private Product product;
-    @OneToOne
-    private User buyer;
 }
