@@ -1,6 +1,8 @@
 package trishop.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import trishop.api.dao.ProductDao;
 import trishop.api.entity.Product;
@@ -16,8 +18,9 @@ public class ProductService {
         return _productDao.save(newProduct);
     }
 
-    public List<Product> getAllProducts() {
-        return (List<Product>) _productDao.findAll();
+    public List<Product> getAllProducts(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return (List<Product>) _productDao.findAll(pageable);
     }
 
     public Product getProductDetailsById(int productId)

@@ -47,8 +47,8 @@ public class ProductController {
     }
 
     @GetMapping({"/getAllProducts"})
-    public List<Product> getAllProducts() {
-        return _productService.getAllProducts();
+    public List<Product> getAllProducts(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "10") int pageSize) {
+        return _productService.getAllProducts(pageNumber, pageSize);
     }
 
     @GetMapping({"/getProductDetailsById/{productId}"})
