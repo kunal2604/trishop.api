@@ -18,9 +18,17 @@ public class ProductService {
         return _productDao.save(newProduct);
     }
 
-    public List<Product> getAllProducts(int pageNumber, int pageSize) {
+    public List<Product> getAllProducts(int pageNumber, int pageSize, String searchKey) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        return (List<Product>) _productDao.findAll(pageable);
+
+        if(searchKey.isEmpty()) {
+            return (List<Product>) _productDao.findAll(pageable);
+        }
+        else {
+            return (List<Product>) _productDao.findByProductNameContainingIgnoreCaseOrProductDescriptionContainingIgnoreCase(
+                   searchKey, searchKey, pageable);
+        }
+
     }
 
     public Product getProductDetailsById(int productId)
