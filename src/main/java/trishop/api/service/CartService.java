@@ -11,6 +11,7 @@ import trishop.api.entity.Product;
 import trishop.api.entity.User;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CartService {
@@ -28,6 +29,12 @@ public class CartService {
 
         if(currentUserName != null) {
             user = userDao.findById(currentUserName).get();
+        }
+
+        List<Cart> existingCartList = cartDao.findByUser(user);
+        List<Cart> filteredList = existingCartList.stream().filter(x -> x.getProduct().getProductId() == productId).collect(Collectors.toList());
+        if(filteredList.size() > 0) {
+            return null;
         }
         if(product != null && user != null) {
             Cart cart = new Cart(product, user);
