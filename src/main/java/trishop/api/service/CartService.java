@@ -10,6 +10,8 @@ import trishop.api.entity.Cart;
 import trishop.api.entity.Product;
 import trishop.api.entity.User;
 
+import java.util.List;
+
 @Service
 public class CartService {
     @Autowired
@@ -32,5 +34,11 @@ public class CartService {
             return cartDao.save(cart);
         }
         return null;
+    }
+
+    public List<Cart> getCartDetails() {
+        String username = JwtRequestFilter.CURRENT_USER;
+        User user = userDao.findById(username).get();
+        return cartDao.findByUser(user);
     }
 }

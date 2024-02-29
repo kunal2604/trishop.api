@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import trishop.api.entity.Cart;
 import trishop.api.service.CartService;
 
+import java.util.List;
+
 @RestController
 public class CartController {
 
@@ -17,5 +19,11 @@ public class CartController {
     @GetMapping({"/addToCart/{productId}"})
     public Cart addToCart(@PathVariable(name = "productId") Integer productId) {
         return cartService.addToCart(productId);
+    }
+
+    @PreAuthorize("hasRole('User')")
+    @GetMapping({"/getCartDetails"})
+    public List<Cart> getCartDetails() {
+        return cartService.getCartDetails();
     }
 }

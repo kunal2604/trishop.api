@@ -10,6 +10,9 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer cartId;
 
+    public Cart() {
+
+    }
     public Cart(Product product, User user) {
         this.product = product;
         this.user = user;
