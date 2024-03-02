@@ -51,4 +51,10 @@ public class OrderDetailService {
             }
         }
     }
+
+    public List<OrderDetail> getAllOrders() {
+        String currentUserName = JwtRequestFilter.CURRENT_USER;
+        User currentUser = userDao.findById(currentUserName).get();
+        return orderDetailDao.findByBuyer(currentUser);
+    }
 }
